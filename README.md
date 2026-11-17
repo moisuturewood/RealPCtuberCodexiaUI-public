@@ -1,6 +1,10 @@
 # RealPCtuber Codexia UI
 
-A Windows desktop app that reads Codex progress aloud with VOICEVOX:四国めたん and synchronizes captions, facial expressions, and a 2D avatar.
+This Windows desktop app is a companion for [OpenAI Codex](https://openai.com/codex/), an AI coding agent that helps write, review, and debug software.
+
+It watches one selected local Codex session log and reads new progress commentary aloud with VOICEVOX:四国めたん, while synchronizing captions, expressions, and a 2D avatar.
+
+This app reads local session files on the same PC. It does not call the OpenAI API or access Codex cloud conversations.
 
 ## Features
 
