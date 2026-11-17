@@ -1,0 +1,15 @@
+[workspace]
+name = "realpctuber-codexia-ui"
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tasks]
+dev = "pnpm dev"
+start = "pnpm start"
+server = "pnpm server"
+check = "pnpm check"
+voice-test = "pnpm voice:test"
+install-shortcut = "pnpm shortcut:install"
+legacy-sample = "pnpm legacy:sample"
+legacy-overlay = "pnpm legacy:overlay"
+legacy-overlay-detached = "pnpm legacy:overlay:detached"

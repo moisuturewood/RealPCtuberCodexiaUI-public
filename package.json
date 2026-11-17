@@ -1,0 +1,31 @@
+{
+  "name": "realpctuber-codexia-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc -p tsconfig.electron.json && electron dist/electronMain.js",
+    "start": "tsc -p tsconfig.electron.json && electron dist/electronMain.js",
+    "server": "tsx src/server.ts",
+    "electron:build": "tsc -p tsconfig.electron.json",
+    "electron": "tsc -p tsconfig.electron.json && electron dist/electronMain.js",
+    "check": "tsc --noEmit",
+    "test:optimization": "tsx --test tests/optimization.test.ts && uv run python -m unittest discover -s tests -p test_voicevox_worker.py",
+    "test:renderers": "tsx --test tests/floatingRenderer.test.ts",
+    "voice:test": "uv run python tools/voicevox_synth.py --text \"Elinの移動経路を確認しています。\" --style-id 2 --output outputs/audio/voice-test.wav --json",
+    "shortcut:install": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/install-start-menu-shortcut.ps1",
+    "legacy:sample": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/post-sample.ps1",
+    "legacy:overlay": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-floating-overlay.ps1",
+    "legacy:overlay:detached": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-floating-overlay.ps1 -StartDetached"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "electron": "^42.5.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codexia.local/schemas/analysis-event.schema.json",
+  "title": "RealPCtuber analysis event",
+  "type": "object",
+  "required": ["schemaVersion", "timestamp", "text", "emotion", "voice", "layers"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "threadId": { "type": "string" },
+    "source": { "type": "string" },
+    "text": { "type": "string" },
+    "analysisProvider": { "type": "string" },
+    "analysisModel": { "type": "string" },
+    "emotion": {
+      "type": "string",
+      "enum": ["neutral", "success", "trouble", "error", "surprise", "smile", "shy_flirty", "happy", "fun", "focused", "warning", "waiting"]
+    },
+    "emotionIntensity": { "type": "number", "minimum": 0, "maximum": 1 },
+    "stance": { "type": "string" },
+    "gesture": { "type": "string" },
+    "voice": {
+      "type": "object",
+      "required": ["speaker", "styleId"],
+      "properties": {
+        "speaker": { "type": "string" },
+        "styleId": { "type": "integer" },
+        "speedScale": { "type": "number" },
+        "pitchScale": { "type": "number" },
+        "intonationScale": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "layers": {
+      "type": "object",
+      "required": ["mouth", "eyes", "brows", "faceColor"],
+      "properties": {
+        "mouth": { "type": "string" },
+        "eyes": { "type": "string" },
+        "brows": { "type": "string" },
+        "faceColor": { "type": "string" },
+        "extras": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "reason": { "type": "string" },
+    "userCorrection": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

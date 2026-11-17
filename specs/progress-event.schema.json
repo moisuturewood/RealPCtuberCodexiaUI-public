@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codexia.local/schemas/progress-event.schema.json",
+  "title": "RealPCtuber progress event",
+  "type": "object",
+  "required": ["source", "kind", "text"],
+  "properties": {
+    "threadId": {
+      "type": "string",
+      "description": "Optional Codex thread URI, for example codex://threads/..."
+    },
+    "source": {
+      "type": "string",
+      "examples": ["codex-progress", "manual", "elin-play"]
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["progress", "summary", "warning", "error", "success", "system"]
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "interrupt"],
+      "default": "normal"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

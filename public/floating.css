@@ -1,0 +1,314 @@
+:root {
+  --subtitle-fill: #ee3f99;
+  --subtitle-white: #ffffff;
+  --subtitle-outer: #df2f8d;
+  --cute-font: "HGP創英角ﾎﾟｯﾌﾟ体", "HG創英角ﾎﾟｯﾌﾟ体", "HG丸ｺﾞｼｯｸM-PRO", "UD デジタル 教科書体 NP", "Yu Gothic UI", "Meiryo", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.floating-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+  pointer-events: none;
+}
+
+body[data-floating-role="avatar"] .floating-subtitle,
+body[data-floating-role="avatar"] .subtitle-menu,
+body[data-floating-role="subtitle"] .floating-avatar,
+body[data-floating-role="subtitle"] .thread-menu {
+  display: none;
+}
+
+.subtitle-filter-definitions {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-avatar {
+  position: absolute;
+  right: 2vw;
+  bottom: 80px;
+  max-width: min(46vw, 470px);
+  max-height: calc(100vh - 110px);
+  object-fit: contain;
+  cursor: grab;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: left, top, width;
+  -webkit-app-region: no-drag;
+}
+
+.thread-menu {
+  position: absolute;
+  z-index: 30;
+  width: min(360px, calc(100vw - 28px));
+  color: #2b2430;
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+}
+
+.thread-menu[hidden] {
+  display: none;
+}
+
+.thread-menu-form {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid #ee3f99;
+  border-radius: 8px;
+  background: rgba(255, 250, 254, 0.96);
+  box-shadow: 0 12px 36px rgba(84, 41, 72, 0.22);
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+}
+
+.thread-menu-title {
+  color: #a32768;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.thread-menu-select,
+.thread-menu-input {
+  width: 100%;
+  min-height: 34px;
+  box-sizing: border-box;
+  border: 1px solid #e7b8d3;
+  border-radius: 6px;
+  background: #fff;
+  color: #2b2430;
+  font: inherit;
+  font-size: 13px;
+  padding: 7px 9px;
+}
+
+.thread-menu-actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
+
+.thread-menu-actions button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: #cf3f8b;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0 12px;
+}
+
+.thread-menu-actions button[type="button"] {
+  background: #7d6d78;
+}
+
+.thread-menu-actions button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.thread-menu-status {
+  min-height: 18px;
+  color: #8b315f;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.floating-visibility-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  color: #6f3153;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.floating-visibility-toggle input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: #cf3f8b;
+  cursor: pointer;
+}
+
+.subtitle-menu {
+  position: absolute;
+  z-index: 30;
+  width: min(300px, calc(100vw - 28px));
+  color: #2b2430;
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+}
+
+.subtitle-menu[hidden] {
+  display: none;
+}
+
+.subtitle-menu-panel {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 2px solid #ee3f99;
+  border-radius: 8px;
+  background: rgba(255, 250, 254, 0.97);
+  box-shadow: 0 12px 36px rgba(84, 41, 72, 0.22);
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+}
+
+.subtitle-opacity-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #a32768;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.subtitle-opacity-label output {
+  min-width: 4ch;
+  color: #6f3153;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.subtitle-opacity-slider {
+  width: 100%;
+  margin: 0;
+  accent-color: #cf3f8b;
+  cursor: pointer;
+}
+
+.subtitle-menu-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.subtitle-menu-actions button {
+  min-height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: #7d6d78;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0 12px;
+}
+
+.subtitle-menu-actions button:first-child {
+  background: #cf3f8b;
+}
+
+.floating-avatar:active,
+.floating-subtitle:active {
+  cursor: grabbing;
+}
+
+.floating-subtitle {
+  position: absolute;
+  left: 8px;
+  bottom: 12px;
+  width: fit-content;
+  max-width: calc(100vw - 16px);
+  color: var(--subtitle-fill);
+  cursor: grab;
+  font-family: var(--cute-font);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.85;
+  padding: 20px 28px 32px;
+  box-sizing: border-box;
+  contain: layout style;
+  isolation: isolate;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  pointer-events: auto;
+  touch-action: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: left, top, width;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+  -webkit-app-region: no-drag;
+  text-shadow: none;
+  text-rendering: geometricPrecision;
+}
+
+body[data-floating-role="avatar"] .floating-avatar {
+  width: 360px;
+  max-width: none;
+  max-height: none;
+}
+
+.subtitle-layer {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
+  overflow-wrap: inherit;
+  white-space: inherit;
+}
+
+.subtitle-layer-outer,
+.subtitle-layer-white {
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  paint-order: stroke fill;
+}
+
+.subtitle-layer-outer {
+  z-index: 0;
+  color: var(--subtitle-outer);
+  -webkit-text-fill-color: var(--subtitle-outer);
+  -webkit-text-stroke: 18px var(--subtitle-outer);
+}
+
+.subtitle-layer-white {
+  z-index: 1;
+  color: var(--subtitle-white);
+  -webkit-text-fill-color: var(--subtitle-white);
+  -webkit-text-stroke: 8px var(--subtitle-white);
+}
+
+.subtitle-layer-fill {
+  position: relative;
+  z-index: 2;
+  color: var(--subtitle-fill);
+  -webkit-text-fill-color: var(--subtitle-fill);
+  -webkit-text-stroke: 0;
+}
+
+.subtitle-emoji {
+  display: inline-block;
+}
+
+.subtitle-layer-outer .subtitle-emoji,
+.subtitle-layer-white .subtitle-emoji {
+  visibility: hidden;
+}
+
+.subtitle-layer-fill .subtitle-emoji {
+  filter: url("#subtitleEmojiOutline");
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Floating Metan</title>
+    <link rel="stylesheet" href="floating.css" />
+  </head>
+  <body>
+    <svg class="subtitle-filter-definitions" width="0" height="0" aria-hidden="true">
+      <defs>
+        <filter id="subtitleEmojiOutline" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+          <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="outerShape" />
+          <feFlood flood-color="#df2f8d" result="outerColor" />
+          <feComposite in="outerColor" in2="outerShape" operator="in" result="outerOutline" />
+          <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="whiteShape" />
+          <feFlood flood-color="#ffffff" result="whiteColor" />
+          <feComposite in="whiteColor" in2="whiteShape" operator="in" result="whiteOutline" />
+          <feMerge>
+            <feMergeNode in="outerOutline" />
+            <feMergeNode in="whiteOutline" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+    <main id="floatingRoot" class="floating-root">
+      <img id="floatingAvatar" class="floating-avatar" alt="四国めたん" />
+      <div id="floatingSubtitle" class="floating-subtitle">待機しています。</div>
+      <section id="subtitleMenu" class="subtitle-menu" hidden>
+        <div class="subtitle-menu-panel">
+          <label class="floating-visibility-toggle">
+            <input id="subtitleVisibleToggle" type="checkbox" checked />
+            <span>字幕を表示</span>
+          </label>
+          <label class="subtitle-opacity-label" for="subtitleOpacity">
+            <span>字幕の透過度</span>
+            <output id="subtitleOpacityValue" for="subtitleOpacity">100%</output>
+          </label>
+          <input id="subtitleOpacity" class="subtitle-opacity-slider" type="range" min="15" max="100" step="1" value="100" />
+          <div class="subtitle-menu-actions">
+            <button id="subtitleMenuReset" type="button">初期化</button>
+            <button id="subtitleMenuClose" type="button">閉じる</button>
+          </div>
+        </div>
+      </section>
+      <section id="threadMenu" class="thread-menu" hidden>
+        <form id="threadMenuForm" class="thread-menu-form">
+          <div class="thread-menu-title">スレッド実況</div>
+          <label class="floating-visibility-toggle">
+            <input id="threadMenuSubtitleVisible" type="checkbox" checked />
+            <span>字幕を表示</span>
+          </label>
+          <label class="subtitle-opacity-label" for="speechVolume"><span>めたんちゃんの音量（次の文から）</span><output id="speechVolumeValue" for="speechVolume">100%</output></label>
+          <input id="speechVolume" class="subtitle-opacity-slider" type="range" min="0" max="100" step="1" value="100" />
+          <select id="threadMenuSelect" class="thread-menu-select" aria-label="保存済みスレッド"></select>
+          <input id="threadMenuId" class="thread-menu-input" type="text" placeholder="thread ID / codex://threads/..." autocomplete="off" />
+          <input id="threadMenuName" class="thread-menu-input" type="text" placeholder="表示名" autocomplete="off" />
+          <div class="thread-menu-actions">
+            <button id="threadMenuStart" type="submit">追加して開始</button>
+            <button id="threadMenuSave" type="button">名前保存</button>
+            <button id="threadMenuClose" type="button">閉じる</button>
+          </div>
+          <div id="threadMenuStatus" class="thread-menu-status" aria-live="polite"></div>
+        </form>
+      </section>
+    </main>
+    <script src="floating.js" type="module"></script>
+  </body>
+</html>
